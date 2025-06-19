@@ -1,4 +1,5 @@
 import random
+from datetime import datetime, timedelta
 
 from locust import HttpUser, task, between
 
@@ -9,7 +10,7 @@ class Banker(HttpUser):
     accounts = tuple(range(1, num_accounts + 1))
     username = "test_test"
     password = "password_password"
-    wait_time = between(1, 5)
+    wait_time = between(1, 60)
 
     @task(3)
     def transfer(self):
@@ -22,6 +23,6 @@ class Banker(HttpUser):
     @task(1)
     def get_transfers(self):
         account_id = random.choice(self.accounts)
-        from_time = '2025-06-18T18:25:00'
-        to_time = '2025-06-18T18:45:00'
+        from_time = (datetime.now() - timedelta(hours=1)).isoformat()
+        to_time = datetime.now().isoformat()
         self.client.get(f"/transfers/account/{account_id}?from_time={from_time}&to_time={to_time}", name = "/transfers/account", auth=(self.username, self.password), stream=True)
