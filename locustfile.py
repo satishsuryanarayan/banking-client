@@ -10,7 +10,7 @@ class Banker(HttpUser):
     accounts = tuple(range(1, num_accounts + 1))
     username = "test_test"
     password = "password_password"
-    wait_time = between(15, 60)
+    wait_time = between(30, 120)
 
     @task(3)
     def transfer(self):
