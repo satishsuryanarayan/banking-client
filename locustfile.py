@@ -23,6 +23,6 @@ class Banker(HttpUser):
     @task(1)
     def get_transfers(self):
         account_id = random.choice(self.accounts)
-        from_time = (datetime.now() - timedelta(hours=1)).isoformat()
-        to_time = datetime.now().isoformat()
+        from_time = (datetime.now() + timedelta(hours=5)).isoformat()
+        to_time = (datetime.now() + timedelta(hours=7)).isoformat()
         self.client.get(f"/transfers/account/{account_id}?from_time={from_time}&to_time={to_time}", name = "/transfers/account", auth=(self.username, self.password), stream=True)
