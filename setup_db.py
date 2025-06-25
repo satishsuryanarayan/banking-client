@@ -15,7 +15,7 @@ adapter = HTTPAdapter(max_retries=retry_strategy)
 username = "test_test"
 password = "password_password"
 host = "localhost"
-port = "8000"
+port = "80"
 
 def run():
     with requests.session() as session:

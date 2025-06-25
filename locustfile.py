@@ -7,7 +7,7 @@ from requests.models import Response
 
 
 class Banker(HttpUser):
-    host = "http://localhost:8000/v1"
+    host = "http://localhost:80/v1"
     num_accounts = 20000
     accounts = tuple(range(1, num_accounts + 1))
     username = "test_test"
@@ -21,7 +21,7 @@ class Banker(HttpUser):
         transfer = {"transfer": {"from_account_id": from_account, "to_account_id": to_account,
                                  "amount": round(random.uniform(1.00, 5000.00), 2)}}
         with self.client.post("/transfers", json=transfer, auth=(self.username, self.password)) as response:
-            print(json.dumps(response.json(), indent=4))
+            print(response.status_code)
 
     @task(1)
     def get_transfers(self):
