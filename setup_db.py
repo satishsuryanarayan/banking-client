@@ -39,7 +39,7 @@ def run():
         ws_host = "ws://localhost:80/v1/bank"
         username_password = username + ":" + password
         token = base64.b64encode(username_password.encode("utf-8"))
-        headers = [f"Authorization: Basic {token}"]
+        headers = [f"Authorization: Basic {token}", "Content-Type: application/json", "Accept: application/json"]
         ws = websocket.create_connection(ws_host, header=headers)
         try:
             dto: CreateCustomerDTO = CreateCustomerDTO.model_validate({"name": "test_customer"})

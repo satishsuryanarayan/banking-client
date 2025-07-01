@@ -22,7 +22,7 @@ class Banker(User):
     def on_start(self):
         username_password = self.username + ":" + self.password
         token = base64.b64encode(username_password.encode("utf-8"))
-        headers = [f"Authorization: Basic {token}"]
+        headers = [f"Authorization: Basic {token}", "Content-Type: application/json", "Accept: application/json"]
         self.ws = websocket.create_connection(self.ws_host, header=headers)
 
     def on_stop(self):
