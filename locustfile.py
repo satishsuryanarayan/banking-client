@@ -11,7 +11,7 @@ from dtos.getaccounttransfersdto import GetAccountTransfersDTO
 
 
 class Banker(User):
-    ws_host = "ws://localhost:80/v1/bank"
+    host = "ws://localhost:80/v1/bank"
     num_accounts = 20000
     accounts = tuple(range(1, num_accounts + 1))
     username = "test_test"
@@ -23,7 +23,7 @@ class Banker(User):
         username_password = self.username + ":" + self.password
         token = base64.b64encode(username_password.encode("utf-8"))
         headers = [f"Authorization: Basic {token}", "Content-Type: application/json", "Accept: application/json"]
-        self.ws = websocket.create_connection(self.ws_host, header=headers)
+        self.ws = websocket.create_connection(self.host, header=headers)
 
     def on_stop(self):
         self.ws.close()
