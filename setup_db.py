@@ -45,6 +45,7 @@ def run():
             dto: CreateCustomerDTO = CreateCustomerDTO.model_validate({"name": "test_customer"})
             ws.send(dto.model_dump_json())
             response = ws.recv()
+            print(response)
             json_data = json.loads(response)
             print(json.dumps(json_data, indent=4))
             customer_id = json_data["id"]
