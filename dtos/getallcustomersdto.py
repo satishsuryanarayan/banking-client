@@ -10,6 +10,6 @@ class GetAllCustomersDTO(CustomersViewDTO):
     from_time: datetime = datetime.now() - timedelta(days=7)
     to_time: datetime = datetime.now()
 
-    @model_validator(mode="after")
-    def validate_get_all_customers(self) -> Self:
+    def __init__(self, **data):
+        super().__init__(**data)
         self.method = "get_all_customers"
