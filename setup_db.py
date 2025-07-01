@@ -30,18 +30,19 @@ def run():
         session.mount("http://", adapter)
         session.headers.update({"Content-Type": "application/json", "Accept": "application/json"})
         json_data = json.dumps(
-            {"user": {"username": f"{username}", "password": f"{password}", "email": "name@domain.com"}})
+            {"dto": {"username": f"{username}", "password": f"{password}", "email": "name@domain.com"}})
         print(json_data)
         response = session.post(f"http://{host}:{port}/v1/users", data=json_data)
         data = response.json()
         print(json.dumps(data))
 
         ws_host = "ws://localhost:80/v1/bank"
-        up_bytes = (username + ":" + password).encode("utf-8")
-        token = base64.b64encode(up_bytes)
-        headers = {"Authorization": f"Basic {token}"}
-        with websocket.create_connection(ws_host, headers=headers) as ws:
+        username_password = username + ":" + password
+        token = base64.b64encode(username_password.encode("utf-8"))
+        headers = [f"Authorization: Basic {token}"]
+        with websocket.create_connection(ws_host, header=headers) as ws:
             dto: CreateCustomerDTO = CreateCustomerDTO.model_validate({"name": "test_customer"})
+            print(json.dumps(dto))
             ws.send(json.dumps(dto))
             response = ws.recv()
             json_data = json.loads(response)
