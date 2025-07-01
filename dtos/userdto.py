@@ -1,6 +1,6 @@
 from pydantic import EmailStr
 
-from banking.apps.bank.v1.dtos.views.usersviewdto import UsersViewDTO
+from dtos.views.usersviewdto import UsersViewDTO
 
 
 class UserDTO(UsersViewDTO):
