@@ -40,7 +40,8 @@ def run():
         username_password = username + ":" + password
         token = base64.b64encode(username_password.encode("utf-8"))
         headers = [f"Authorization: Basic {token}"]
-        with websocket.create_connection(ws_host, header=headers) as ws:
+        ws = websocket.create_connection(ws_host, header=headers)
+        try:
             dto: CreateCustomerDTO = CreateCustomerDTO.model_validate({"name": "test_customer"})
             print(json.dumps(dto))
             ws.send(json.dumps(dto))
@@ -55,6 +56,8 @@ def run():
                 response = ws.recv()
                 json_data = json.loads(response)
                 print(json.dumps(json_data, indent=4))
+        finally:
+            ws.close()
 
     print("Created " + str(num_accounts) + " accounts")
 
