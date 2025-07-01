@@ -43,8 +43,7 @@ def run():
         ws = websocket.create_connection(ws_host, header=headers)
         try:
             dto: CreateCustomerDTO = CreateCustomerDTO.model_validate({"name": "test_customer"})
-            print(json.dumps(dto))
-            ws.send(json.dumps(dto))
+            ws.send(dto.model_dump_json())
             response = ws.recv()
             json_data = json.loads(response)
             print(json.dumps(json_data, indent=4))
@@ -52,7 +51,7 @@ def run():
             for i in range(1, num_accounts + 1):
                 dto: CreateAccountDTO = CreateAccountDTO.model_validate(
                     {"customer_id": customer_id, "amount": round(random.uniform(50000.00, 9999999999.99), 2)})
-                ws.send(json.dumps(dto))
+                ws.send(dto.model_dump_json())
                 response = ws.recv()
                 json_data = json.loads(response)
                 print(json.dumps(json_data, indent=4))
