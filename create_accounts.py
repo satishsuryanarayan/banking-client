@@ -4,12 +4,11 @@ import random
 
 import requests
 import websocket
+from bank.datamodel.v1.dtos.createaccount import CreateAccountDTO
+from bank.datamodel.v1.dtos.createcustomer import CreateCustomerDTO
+from bank.datamodel.v1.dtos.registeruser import RegisterUserDTO
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
-
-from dtos.createaccountdto import CreateAccountDTO
-from dtos.createcustomerdto import CreateCustomerDTO
-from dtos.registeruserdto import RegisterUserDTO
 
 
 class Banker:

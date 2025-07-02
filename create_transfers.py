@@ -4,9 +4,8 @@ import random
 from datetime import datetime, timedelta
 
 import websocket
-
-from dtos.createtransferdto import CreateTransferDTO
-from dtos.getaccounttransfersdto import GetAccountTransfersDTO
+from bank.datamodel.v1.dtos.createtransfer import CreateTransferDTO
+from bank.datamodel.v1.dtos.getaccounttransfers import GetAccountTransfersDTO
 
 
 class Banker:
