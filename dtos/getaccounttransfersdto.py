@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-from dtos.views.transfersviewdto import TransfersViewDTO
+from banking.apps.bank.v1.dtos.views.transfersviewdto import TransfersViewDTO
 
 
 class GetAccountTransfersDTO(TransfersViewDTO):

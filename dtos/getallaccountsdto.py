@@ -1,9 +1,6 @@
 from datetime import datetime, timedelta
-from typing import Self
 
-from pydantic import model_validator
-
-from dtos.views.accountsviewdto import AccountsViewDTO
+from banking.apps.bank.v1.dtos.views.accountsviewdto import AccountsViewDTO
 
 
 class GetAllAccountsDTO(AccountsViewDTO):

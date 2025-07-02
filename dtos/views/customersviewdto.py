@@ -1,4 +1,4 @@
-from dtos.views.basedto import BaseDTO
+from banking.apps.bank.v1.dtos.views.basedto import BaseDTO
 
 
 class CustomersViewDTO(BaseDTO):

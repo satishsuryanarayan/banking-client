@@ -1,7 +1,7 @@
 from datetime import datetime
 from decimal import Decimal
 
-from dtos.views.transfersviewdto import TransfersViewDTO
+from banking.apps.bank.v1.dtos.views.transfersviewdto import TransfersViewDTO
 
 
 class TransferDTO(TransfersViewDTO):
@@ -9,3 +9,6 @@ class TransferDTO(TransfersViewDTO):
     to_account_id: int
     amount: Decimal
     time: datetime
+
+    def __init__(self, **data):
+        super().__init__(**data)

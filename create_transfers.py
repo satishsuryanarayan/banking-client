@@ -44,7 +44,7 @@ class Banker:
         from_time = datetime.now().isoformat()
         to_time = (datetime.now() + timedelta(hours=7)).isoformat()
         dto: GetAccountTransfersDTO = GetAccountTransfersDTO.model_validate(
-            {"account_id": account_id, from_time: from_time, to_time: to_time})
+            {"account_id": account_id, "from_time": from_time, "to_time": to_time})
         self.ws.send(dto.model_dump_json())
         response = self.ws.recv()
         while response != eom:
