@@ -1,7 +1,7 @@
 from pydantic import EmailStr, model_validator
 from typing_extensions import Self
 
-from banking.apps.bank.v1.dtos.views.usersviewdto import UsersViewDTO
+from dtos.views.usersviewdto import UsersViewDTO
 
 
 class RegisterUserDTO(UsersViewDTO):

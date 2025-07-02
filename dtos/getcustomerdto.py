@@ -1,4 +1,4 @@
-from banking.apps.bank.v1.dtos.views.customersviewdto import CustomersViewDTO
+from dtos.views.customersviewdto import CustomersViewDTO
 
 
 class GetCustomerDTO(CustomersViewDTO):

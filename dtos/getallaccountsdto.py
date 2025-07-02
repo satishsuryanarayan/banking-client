@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-from banking.apps.bank.v1.dtos.views.accountsviewdto import AccountsViewDTO
+from dtos.views.accountsviewdto import AccountsViewDTO
 
 
 class GetAllAccountsDTO(AccountsViewDTO):

@@ -3,7 +3,7 @@ from decimal import Decimal
 from pydantic import model_validator
 from typing_extensions import Self
 
-from banking.apps.bank.v1.dtos.views.transfersviewdto import TransfersViewDTO
+from dtos.views.transfersviewdto import TransfersViewDTO
 
 
 class CreateTransferDTO(TransfersViewDTO):

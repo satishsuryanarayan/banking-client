@@ -1,7 +1,7 @@
 from datetime import datetime
 from decimal import Decimal
 
-from banking.apps.bank.v1.dtos.views.transfersviewdto import TransfersViewDTO
+from dtos.views.transfersviewdto import TransfersViewDTO
 
 
 class TransferDTO(TransfersViewDTO):
