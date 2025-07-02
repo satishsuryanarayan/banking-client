@@ -14,7 +14,7 @@ class Banker:
         self.host = "localhost"
         self.port = "80"
         self.ws_host = "ws://localhost:80/v1/bank"
-        self.num_accounts = 500
+        self.num_accounts = 20000
         self.accounts = tuple(range(1, self.num_accounts + 1))
         self.username = "test_test"
         self.password = "password_password"
