@@ -1,11 +1,11 @@
 import base64
 import json
 import random
+
+import requests
+import websocket
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
-
-import websocket
-import requests
 
 from dtos.createaccountdto import CreateAccountDTO
 from dtos.createcustomerdto import CreateCustomerDTO
@@ -37,7 +37,8 @@ class Banker:
         with requests.session() as session:
             session.mount("http://", adapter)
             session.headers.update({"Content-Type": "application/json", "Accept": "application/json"})
-            dto: RegisterUserDTO = RegisterUserDTO(username=self.username, password=self.password, email="name@domain.com")
+            dto: RegisterUserDTO = RegisterUserDTO(username=self.username, password=self.password,
+                                                   email="name@domain.com")
             json_data = json.dumps(
                 {"param": dto.model_dump()})
             print(json_data)
