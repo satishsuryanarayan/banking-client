@@ -1,6 +1,7 @@
 import base64
 import json
 import random
+import sys
 from datetime import datetime, timedelta
 
 import websocket
@@ -45,10 +46,13 @@ class Banker:
         dto: GetAccountTransfersDTO = GetAccountTransfersDTO.model_validate(
             {"account_id": account_id, "from_time": from_time, "to_time": to_time})
         self.ws.send(dto.model_dump_json())
+        full_response = []
         response = self.ws.recv()
         while response != Message.END:
-            print(response)
+            full_response.append(response)
             response = self.ws.recv()
+        json_response = json.loads("".join(full_response))
+        print(json.dumps(json_response, indent=4))
 
 
 if __name__ == "__main__":
