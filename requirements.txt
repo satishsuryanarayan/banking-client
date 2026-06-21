@@ -1,4 +1,4 @@
-satsur-banking-api>=0.0.4
+satsur-banking-api>=0.0.5
 requests>=2.32.4
 urllib3>=2.4.0
 pydantic>=2.11.7
